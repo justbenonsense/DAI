@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} Práctica 3 - DAI {% endblock %}
+
+{% block content %}
+<h1 class="important" style="font-size:350%; font-family:verdana; text-align:center">Práctica 3- DAI</h1>
+
+<p>Esta es la aplicación web de la segunda práctica de Desarrollo de Aplicaciones para Internet. 
+    Consta de una barra de navegación, un pie de página y un menú vertical situado a la izquierda.
+</p>
+
+{% if not session['username'] %}
+<h4>Para ver todas las funcionalidades inicie sesión:</h4>
+<a href="{{ url_for('login') }}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Iniciar Sesión</a>
+{% endif %}
+{% endblock %}

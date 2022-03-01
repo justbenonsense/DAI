@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ejercicio 3 - Criba de Eratóstenes
+{% endblock %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+        <h1>Ejercicio 3 - Criba de Eratóstenes</h1>
+        {% if error %}
+            {{ error }}
+        {% else %}
+            {% if mostrar %}
+                <p style="color: darkblue;">Los números primos menores que {{ num }} son: {{ primos }} </p>
+            {% endif %}
+        {% endif %}
+        <form action="{{ url_for( 'criba') }}" method="POST">
+            <dl>
+            <div class="form-group">
+                <label for="numero">Introduce un número natural mayor que 1:</label>
+                <input type="number" class="form-control" id="numero" name="numero" placeholder="Número natural" required>
+            </div>
+            </dl>
+
+            <dl>
+                <div class=" text-align ">
+                    <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                </div>
+            </dl>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

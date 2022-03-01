@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ejercicio 5 - Secuencia Balanceada
+{% endblock %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+        <h1>Ejercicio 5 - Secuencia Balanceada</h1>
+        {% if mostrar %}
+            {% if balanceado %}
+                <p style="color: darkblue;">La secuencia {{ secuencia }} está balanceada. </p>
+            {% else %}
+                <p style="color: darkblue;">La secuencia {{ secuencia }} no está balanceada. </p>
+            {% endif %}
+          
+        {% endif %}
+        <form action="{{ url_for( 'secuencia_balanceada') }}" method="POST">
+            <dl>
+            <div class="form-group">
+                <label for="secuencia">Introduce una secuencia de corchetes []:</label>
+                <input type="text" class="form-control" id="secuencia" name="secuencia" placeholder="Secuencia" required>
+            </div>
+            </dl>
+
+            <dl>
+                <div class=" text-align ">
+                    <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                </div>
+            </dl>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

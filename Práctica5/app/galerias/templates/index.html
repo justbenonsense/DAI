@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %} Práctica 5 - DAI {% endblock %}
+
+{% block content %}
+<h1 class="important" style="font-size:350%; font-family:verdana; text-align:center">Práctica 5- DAI</h1>
+
+<div class="container-fluid text-center">
+    <p>Esta es la aplicación web de la quinta práctica de Desarrollo de Aplicaciones para Internet. 
+        En ella puedes navegar entre las distintas bases de datos de Galerias y Cuadros, y realizar operaciones sobre ellas.
+    </p>
+</div>
+
+<br>
+</br>
+
+<div class="container-fluid text-center">
+
+    <h2 class="important" style="font-size:150%; font-family:verdana; text-align:center">¿Qué desea consultar?</h2>
+
+    <div class="row mb-2 justify-content-center">
+
+        <div class="col-md-auto my-2">
+            <a class="btn btn-outline-dark text-center" href="{% url 'lista_galerias' %}">Galerias</a>
+        </div>
+
+        <div class="col-md-auto my-2">
+            <a class="btn btn-outline-dark text-center" href="{% url 'lista_cuadros' %}">Cuadros</a>
+        </div>
+    </div>
+
+    <div class="row mb-2 justify-content-center">
+        {% load static %}
+
+        <div class="col-md-auto my-2">
+            <img src="{% static 'nationalgallery.jpg' %}"  height="350px">
+        </div>
+
+        <div class="col-md-auto my-2">
+            <img src="{% static 'louvre.jpg' %}" height="350px">
+        </div>
+
+        <div class="col-md-auto my-2">
+            <img src="{% static 'prado.jpg' %}"  height="350px">
+        </div>
+    </div>
+
+
+</div>
+
+
+
+{% endblock %}

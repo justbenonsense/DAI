@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if session['username'] %}
+  <div class="row ">
+    <div class="col-md-5 mx-auto">
+      <h1 style="margin-top: 3cm;">Cambiar email</h1>
+      {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
+      {% endif %}
+      <form  action="{{ url_for('change_email') }}"  method="POST">
+        <dl>
+        <div class="form-group">
+          <label for="password"><b>Introduzca la contraseña actual:</b></label>
+          <input type="password" class="form-control" id="password" placeholder="Contraseña actual" name="password">
+        </div>
+        </dl>
+
+        <dl>
+        <div class="form-group">
+          <label for="new_email"><b>Nuevo email:</b></label>
+          <input type="email" class="form-control" id="new_email" placeholder="Nuevo email" name="new_email">
+        </div>
+        </dl>
+
+        <button type="submit" class="btn btn-outline-dark" id="change-email" name="signup">Cambiar email</button>  
+      </form>
+    </div>
+  </div>
+
+{% else %}
+
+  <div class="container ">
+    <p>No puedes acceder a esta información. Debes iniciar sesión:</p>
+    <a href="{{ url_for('login') }}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Iniciar Sesión</a>
+  </div>
+
+{% endif %}
+
+
+{% endblock %}

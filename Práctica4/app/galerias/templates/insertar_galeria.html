@@ -1,0 +1,31 @@
+{%extends "base.html" %} 
+{%block title %} 
+Galerias 
+{% endblock %} 
+
+{%block content %}
+<h1 class="text-center">Base de datos de Galerias </h1>
+
+{% load crispy_forms_tags %}
+
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <p class=error>Error: {{ error }}
+        </div> 
+
+    {% endif %}
+
+    <div class="row">
+        <div class="text-center">
+            <h2>Insertar galeria:</h2>
+        </div>
+        <form method="POST">
+            {% csrf_token %} 
+            {{ form|crispy }}
+            <br>
+                <button type="submit" class="btn btn-outline-dark text-center">Insertar</button>
+            </br>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,177 @@
+/*****************************/
+/* MODO NOCTURNO INTERRUPTOR */
+/*****************************/
+
+.darkModeSwitch{
+    background: #3494b1;
+    display:flex;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    border-radius: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.darkModeSwitch span{
+    width:30px;
+    height:30px;
+    line-height:30px;
+    display:block;
+    color:#fff;
+    background: none;
+}
+
+.darkModeSwitch::after{
+    display:block;
+    background: #fffbf5;
+    width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    top:0;
+    left:0;
+    right:unset;
+    border-radius: 3rem;
+    transition: all .5s ease;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, .5);
+    content: "";
+}
+
+.darkModeSwitch.active{
+    background: #fdd384;
+}
+
+.darkModeSwitch.active::after{
+    left:unset;
+    right:0;
+}
+
+/**********************************/
+/* ESTILO DEL CUERPO DE LA PÁGINA */
+/**********************************/
+
+body {
+    background: #f2f2f2;
+    font-family: "Lato", Helvetica, sans-serif;
+}
+
+body.dark{
+    background-color:  #0a4175d7;
+    color: #f1eded; 
+}
+
+body.dark button{
+    background-color:  #0a417598;
+    color: #f1eded; 
+}
+
+body.dark table{
+    background-color:  #617f99;
+    color: #ffffff; 
+}
+
+nav {
+    background: #ffffff;
+    padding: 15px 10px;
+    border-radius: 8px;
+    -webkit-box-shadow: 15px 10px 20px rgba(170, 170, 170, 0.16);
+            box-shadow: 15px 10px 20px rgba(170, 170, 170, 0.16);
+}
+
+
+/*************************************/
+/* TAMAÑOS DE LAS LETRAS DISPONIBLES */
+/*************************************/
+
+.f0 {
+    font-size: 0.8rem;
+}
+.f1 {
+    font-size: 0.9rem;
+}
+.f2 {
+    font-size: 1rem;
+}
+.f3 {
+    font-size: 1.1rem;
+}
+.f4 {
+    font-size: 1.2rem;
+}
+.f5 {
+    font-size: 1.3rem;
+}
+
+
+/*************************************/
+/* ESTILO DE LOS MODALS DE LA PÁGINA */
+/*************************************/
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 20px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    background-color: #20304d;
+    color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+body.dark .modal-content{
+    background-color:  #617f99;
+    color: #ffffff; 
+}

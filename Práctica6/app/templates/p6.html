@@ -1,0 +1,209 @@
+{%extends "base.html" %} 
+
+{%block title %} Friends {% endblock %} 
+
+{% block content %}
+<h1 class="text-center"> Base de datos de episodios de la serie Friends</h1>
+
+<div class="container-fluid text-center">
+    <p> ¿Qué operación desea realizar sobre la base de datos? </p>
+    <div class="row mb-2 justify-content-center">
+        <div class="col-md-auto my-2">
+          <button id="searchEpisodeBtn" class="btn btn-success btn-sm" aria-pressed="true">Buscar Episodios</button>
+        </div>
+
+        <div class="col-md-auto my-2">
+          <button id="addEpisodeBtn" class="btn btn-success btn-sm" aria-pressed="true">Añadir Episodios</button>
+        </div>
+    </div>
+</div>
+
+<!-- The Search Modal -->
+<div id="searchEpisode" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Buscar Episodios</h3>
+      <span class="close">&times;</span>
+
+    </div>
+
+    <div class="form-group">
+      <label for="name"><b>Name</b></label>
+      <input type="text" class="form-control" id="buscar_name" name="name" placeholder="Episode's name">
+    </div>
+    <div class="form-group">
+        <label for="id"><b>ID</b></label>
+        <input type="text" class="form-control" id="buscar_id" name="id" placeholder="Episode's ID">
+    </div>
+    <div class="form-group">
+        <label for="url"><b>URL</b></label>
+        <input type="text" class="form-control" id="buscar_url" name="url" placeholder="http://www.tvmaze.com/episodes/id/example">
+    </div>  
+    <div class="form-group">
+        <label for="season"><b>Season</b></label>
+        <input type="number" class="form-control" id="buscar_season" name="season" placeholder="Season 1-10">
+    </div>
+    <div class="form-group">
+        <label for="number"><b>Number</b></label>
+        <input type="number" class="form-control" id="buscar_number" name="number" placeholder="Episode number">
+    </div>
+    <div class="form-group">
+        <label for="airdate"><b>Airdate</b></label>
+        <input type="text" class="form-control" id="buscar_airdate" name="airdate" placeholder="yyyy-mm-dd">
+    </div>
+    <div class="form-group">
+        <label for="airtime"><b>Airtime</b></label>
+        <input type="text" class="form-control" id="buscar_airtime" name="airtime" placeholder="00:00">
+    </div>
+    <div class="form-group">
+        <label for="runtime"><b>Runtime</b></label>
+        <input type="text" class="form-control" id="buscar_runtime" name="runtime" placeholder="00.0">
+    </div>
+    <div class="form-group">
+      <label for="summary"><b>Summary</b></label>
+      <input type="text" class="form-control" id="buscar_summary" name="summary" placeholder="Summary...">
+    </div>
+  </div>
+</div> 
+
+<!-- The Add Modal -->
+<div id="addEpisode" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h3>Añadir Episodio</h3>
+      <span class="close">&times;</span>
+
+    </div>
+
+    <div class="form-group">
+      <label for="name"><b>Name</b></label>
+      <input type="text" class="form-control" id="add-name" name="name" placeholder="Episode's name">
+    </div>
+    <div class="form-group">
+        <label for="id"><b>ID</b></label>
+        <input type="text" class="form-control" id="add-id" name="id" placeholder="Episode's ID" required>
+    </div>
+    <div class="form-group">
+        <label for="url"><b>URL</b></label>
+        <input type="text" class="form-control" id="add-url" name="url" placeholder="http://www.tvmaze.com/episodes/id/example">
+    </div>  
+    <div class="form-group">
+        <label for="season"><b>Season</b></label>
+        <input type="number" class="form-control" id="add-season" name="season" placeholder="Season 1-10">
+    </div>
+    <div class="form-group">
+        <label for="number"><b>Number</b></label>
+        <input type="number" class="form-control" id="add-number" name="number" placeholder="Episode number">
+    </div>
+    <div class="form-group">
+        <label for="airdate"><b>Airdate</b></label>
+        <input type="text" class="form-control" id="add-airdate" name="airdate" placeholder="yyyy-mm-dd">
+    </div>
+    <div class="form-group">
+        <label for="airtime"><b>Airtime</b></label>
+        <input type="text" class="form-control" id="add-airtime" name="airtime" placeholder="00:00">
+    </div>
+    <div class="form-group">
+      <label for="airstamp"><b>Airstamp</b></label>
+      <input type="text" class="form-control" id="add-airstamp" name="airstamp" placeholder="00:00">
+  </div>
+    <div class="form-group">
+        <label for="runtime"><b>Runtime</b></label>
+        <input type="text" class="form-control" id="add-runtime" name="runtime" placeholder="00.0">
+    </div>
+    <div class="form-group">
+      <label for="summary"><b>Summary</b></label>
+      <input type="text" class="form-control" id="add-summary" name="summary" placeholder="Summary...">
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="btn_add_episode">Añadir</button>    
+    </div>
+  </div>
+</div> 
+
+<div class="table-responsive mb-5">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">ID</th>
+                <th scope="col">URL</th>
+                <th scope="col">Season</th>
+                <th scope="col">Number</th>
+                <th scope="col">Airdate</th>
+                <th scope="col">Airtime</th>
+                <th scope="col">Airstamp</th>
+                <th scope="col">Runtime</th>
+                <th scope="col">Summary</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<!-- The Modify Modal -->
+<div id="modifyEpisode" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+
+    <div class="modal-header">
+      <h3>Modificar episodio</h3>
+      <span class="close">&times;</span>
+
+    </div>
+    <div class="form-group" hidden=true>
+      <label for="id"><b>ID</b></label>
+      <input type="text" class="form-control" id="modify-id" name="id" placeholder="Episode's id">
+    </div>
+    <div class="form-group">
+      <label for="name"><b>Name</b></label>
+      <input type="text" class="form-control" id="modify-name" name="name" placeholder="Episode's name">
+    </div>
+    <div class="form-group">
+        <label for="url"><b>URL</b></label>
+        <input type="text" class="form-control" id="modify-url" name="url" placeholder="http://www.tvmaze.com/episodes/id/example">
+    </div>  
+    <div class="form-group">
+        <label for="season"><b>Season</b></label>
+        <input type="number" class="form-control" id="modify-season" name="season" placeholder="Season 1-10">
+    </div>
+    <div class="form-group">
+        <label for="number"><b>Number</b></label>
+        <input type="number" class="form-control" id="modify-number" name="number" placeholder="Episode number">
+    </div>
+    <div class="form-group">
+        <label for="airdate"><b>Airdate</b></label>
+        <input type="text" class="form-control" id="modify-airdate" name="airdate" placeholder="yyyy-mm-dd">
+    </div>
+    <div class="form-group">
+        <label for="airtime"><b>Airtime</b></label>
+        <input type="text" class="form-control" id="modify-airtime" name="airtime" placeholder="00:00">
+    </div>
+    <div class="form-group">
+      <label for="airstamp"><b>Airstamp</b></label>
+      <input type="text" class="form-control" id="modify-airstamp" name="airstamp" placeholder="00:00">
+    </div>
+    <div class="form-group">
+        <label for="runtime"><b>Runtime</b></label>
+        <input type="text" class="form-control" id="modify-runtime" name="runtime" placeholder="00.0">
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary" id="btn_modify_episode">Modificar</button>    
+    </div>
+
+  </div>
+</div> 
+
+
+{% endblock %}

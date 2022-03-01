@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ejercicio 2 - Ordenación
+{% endblock %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+        <h1>Ejercicio 2 - Ordenación</h1>
+        {% if error %}
+            {{ error }}
+        {% else %}
+            {% if mostrar %}
+                <p style="color: darkblue;">Ordenación método {{ metodo }}: {{ sol }}. </p>
+                <p style="color: darkblue;">Tiempo empleado(s): {{ tiempo }}. </p>
+            {% endif %}
+        {% endif %}
+        <form action="{{ url_for( 'ordenacion') }}" method="POST">
+            
+            <dl>
+                <div class="form-group ">
+                    <label for="entrada">Introduce una lista de números a ordenar, separados por comas:</label>
+                    <input type="text" class="form-control " id="entrada" name="entrada" placeholder="Lista de números" required>
+                </div>
+            </dl>
+            <dl>
+            <div class="form-group">
+                <label for="metodo">Seleccione método de ordenación: </label>
+                <input type="text" class="form-control" id="metodo" name="metodo" placeholder="Burbuja, selección o inserción" required>
+            </div>
+            </dl>
+
+            <dl>
+                <div class=" text-align ">
+                    <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                </div>
+            </dl>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

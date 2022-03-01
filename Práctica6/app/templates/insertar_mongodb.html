@@ -1,0 +1,61 @@
+{%extends "base.html" %} 
+{%block title %} 
+Friends 
+{% endblock %} 
+
+{%block content %}
+<h1 class="text-center">Base de datos de episodios de la serie Friends </h1>
+
+<div class="text-center">
+    <h3>Insertar episodios</h3>
+</div>
+
+<form action="{{ url_for('mongo_insertar') }}" method="post">
+      
+    <div class="form-group">
+        <label for="name"><b>Name</b></label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Episode's name" required>
+    </div>
+    <div class="form-group">
+        <label for="id"><b>ID</b></label>
+        <input type="text" class="form-control" id="id" name="id" placeholder="Episode's ID" required>
+    </div>
+    <div class="form-group">
+        <label for="url"><b>URL</b></label>
+        <input type="text" class="form-control" id="url" name="url" placeholder="http://www.tvmaze.com/episodes/id/example">
+    </div>  
+    <div class="form-group">
+        <label for="season"><b>Season</b></label>
+        <input type="number" class="form-control" id="season" name="season" placeholder="Season 1-10">
+    </div>
+    <div class="form-group">
+        <label for="number"><b>Number</b></label>
+        <input type="number" class="form-control" id="number" name="number" placeholder="Episode number">
+    </div>
+    <div class="form-group">
+        <label for="airdate"><b>Airdate</b></label>
+        <input type="text" class="form-control" id="airdate" name="airdate" placeholder="yyyy-mm-dd">
+    </div>
+    <div class="form-group">
+        <label for="airtime"><b>Airtime</b></label>
+        <input type="text" class="form-control" id="airtime" name="airtime" placeholder="00:00">
+    </div>
+    <div class="form-group">
+        <label for="airstamp"><b>Airstamp</b></label>
+        <input type="text" class="form-control" id="airstamp" name="airstamp" placeholder="yyyy-mm-ddT00:00:00-00:00">
+    </div>
+    <div class="form-group">
+        <label for="runtime"><b>Runtime</b></label>
+        <input type="text" class="form-control" id="runtime" name="runtime" placeholder="00.0">
+    </div>
+    <div class="form-group">
+        <label for="summary"><b>Summary</b></label>
+        <input type="text" class="form-control" id="summary" name="summary" placeholder="Episode's summary">
+    </div>
+    <div class="form-group">
+        <div class="text-center mt-3 mb-5">
+            <button type="submit" class="btn btn-outline-dark" id="insertar" name="insertar">Insertar</button>  
+        </div>
+    </div>
+</form>
+{% endblock %}

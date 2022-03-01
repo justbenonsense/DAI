@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% if not session['username'] %}
+<div class="row ">
+  <div class="col-md-5 mx-auto">
+    <h1 style="margin-top: 3cm;">¡Regístrate!</h1>
+    {% if error %}
+      <p class=error><strong>Error:</strong> {{ error }}
+    {% endif %}
+    <form  action="{{ url_for('signup') }}"  method="POST">
+      <dl>
+      <div class="form-group">
+        <label for="username"><b>Nuevo nombre de usuario</b></label>
+        <input type="text" class="form-control" id="username" placeholder="Introduzca nombre de usuario" name="username">
+      </div>
+      </dl>
+
+      <dl>
+        <div class="form-group">
+          <label for="name"><b>Nombre:</b></label>
+          <input type="text" class="form-control" id="name" placeholder="Nombre" name="name">
+        </div>
+        </dl>
+
+      <dl>
+        <div class="form-group">
+          <label for="surname"><b>Apellidos:</b></label>
+          <input type="text" class="form-control" id="surname" placeholder="Apellidos" name="surname">
+        </div>
+        </dl>
+
+      <dl>
+        <div class="form-group">
+          <label for="email"><b>Correo electrónico:</b></label>
+          <input type="email" class="form-control" id="email" placeholder="Introduzca el correo electrónico" name="email">
+        </div>
+        </dl>
+
+      <dl>
+      <div class="form-group">
+        <label for="pwd"><b>Contraseña:</b></label>
+        <input type="password" class="form-control" id="password" placeholder="Introduzca la contraseña" name="password">
+      </div>
+      </dl>
+
+      <button type="submit" class="btn btn-outline-dark" id="signup" name="signup">Sign Up!</button>  
+    </form>
+  </div>
+</div>
+
+{% else %}
+
+  <div class="container ">
+    <p>Ya ha iniciado sesión, si lo desea puede cerrar sesión:</p>
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Cerrar Sesión</a>
+  </div>
+
+{% endif %}
+
+{% endblock %}

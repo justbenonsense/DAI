@@ -1,0 +1,121 @@
+<!doctype html>
+
+{% load static %}
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+		<!-- Título -->
+		<title>{% block title %}{% endblock %}</title>
+
+		<!-- Imagen -->
+		<link rel="icon" type="image" href="{% static 'logo.png' %}"/>
+	</head>
+	<body>
+
+		<header>
+
+		<!-- Barra de navegación -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+
+			<!-- Título e imagen -->
+			<a class="navbar-brand ms-3" href="/#">
+				<img src="{% static 'logo.png' %}" width="60px" height="50px">
+				Práctica 5
+			</a>
+
+			<!-- Botón plegable con las pestañas-->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<!-- Contenido de la barra de navegación -->		  
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+				<!-- Lista de pestañas -->
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link active" href="/#">Home</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="https://grados.ugr.es/ramas/ingenieria-arquitectura/grado-ingenieria-informatica/desarrollo-aplicaciones-internet-especialidad-tecnologias-la-informacion/guia-docente">Guía Docente DAI</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="https://pradogrado2122.ugr.es/auth/saml/login.php">Prado 2021/2022</a>
+					</li>
+				</ul>
+
+				<!------Botones derecha -->
+				<ul class="nav navbar-nav ms-auto">
+	
+					<a href="{% url 'lista_galerias' %}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Galerias</a>
+					
+					<a href="{% url 'lista_cuadros' %}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Cuadros</a>
+				
+					{% if request.user.is_authenticated %}
+					<strong id="username">{{request.user}}</strong>
+
+					<!---Mensaje de bienvenida-->
+					<div class="btn-group mr-1 ms-2 me-2">
+						<a  class="btn btn-primary active">
+							<i class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></i> Bienvenido/a
+					</a>
+					</div>
+
+					<a href="/accounts/logout" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Cerrar Sesión</a>
+					
+
+					{% else %}
+					<a href="/accounts/login" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Iniciar Sesión</a>
+					
+					<a href="/accounts/signup" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Regístrate</a>
+					{% endif %}
+				</ul>
+			</div>
+		</nav>
+
+		</header>
+
+		<!------VERTICAL--MENU---->
+		<div class="container-fluid">
+			<div class="col-sm mt-5">
+				{% block content %}
+				{% endblock %}
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+			</div>				
+		</div>	
+
+		<!-- Footer -->
+		<footer class="text-center text-white fixed-bottom" style="background-color: #0a4275;">
+	
+			<!-- Texto pie de página -->
+			<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+				Carlota Valdivia Manzano
+			</div>
+			<!-- Texto pie de página -->
+		</footer>
+		<!-- Footer -->
+
+		<!-- Optional JavaScript; choose one of the two! -->
+
+		<!-- Option 1: Bootstrap Bundle with Popper -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+		<!-- Option 2: Separate Popper and Bootstrap JS -->
+		<!--
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		-->
+	</body>
+</html>
+

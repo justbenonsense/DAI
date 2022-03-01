@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ejercicio 4 - Sucesión de Fibonacci
+{% endblock %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+
+        <h1>Ejercicio 4 - Sucesión de Fibonacci</h1>
+        {% if error %}
+            {{ error }}
+        {% else %}
+            {% if mostrar %}
+            <p style="color:darkblue;">El {{ num }}-ésimo número de la sucesión de Fibonacci es: {{ res }} </p>
+            {% endif %}
+        {% endif %}
+        <form action="{{ url_for( 'fibonacci') }}" method="POST">
+            <dl>
+            <div class="form-group">
+                <label for="numero">Introduce un número natural:</label>
+                <input type="number" class="form-control" id="numero" name="numero" placeholder="Número natural" required>
+            </div>
+            </dl>
+
+            <dl>
+                <div class=" text-align ">
+                    <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                </div>
+            </dl>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{%extends "base.html" %} 
+{%block title %} 
+Cuadros 
+{% endblock %} 
+
+{%block content %}
+<form action="{% url 'eliminar_cuadro' cuadro.nombre %}" method="POST" class="my-5">
+    
+    {% csrf_token %}
+    <div class="container-fluid text-center">
+        <p> ¿Desea eliminar definitivamente el cuadro: "{{ cuadro.nombre }}" de {{ cuadro.autor }}? </p>
+        
+        <div class="row mb-2 justify-content-center">
+            <div class="col-md-auto my-2">
+                <button type="submit" class="btn btn-danger text-center" name="eliminar">Eliminar</button>
+            </div>
+
+            <div class="col-md-auto my-2">
+                <a class="btn btn-outline-dark text-center " href="{% url 'lista_cuadros' %} ">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

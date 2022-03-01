@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %} Mi Perfil {% endblock %}
+
+{% block content %}
+
+{% if session['username'] %}
+<h1 class="important" style="font-size:350%; font-family:verdana; text-align:center">Mi perfil</h1>
+
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+      <h1 style="margin-top: 1cm">Datos del usuario</h1>
+      {% if error %}
+        <p class=error><strong>Error:</strong> {{ error }}
+      {% endif %}
+      <form  action="{{ url_for('perfil') }}"  method="POST">
+
+        <dl>
+            <div class="form-group">
+              <label for="username"><b>Nombre de usuario:</b></label>
+              <p>{{ username }}</p>
+            </div>
+            </dl>
+      
+        <dl>
+            <div class="form-group">
+            <label for="name"><b>Nombre:</b></label>
+            <p>{{ name }}</p>
+          </div>
+            </dl>
+
+        <dl>
+          <div class="form-group">
+            <label for="surname"><b>Apellidos:</b></label>
+            <p>{{ surname }}</p>
+          </div>
+          </dl>
+  
+        <dl>
+          <div class="form-group">
+            <label for="email"><b>Correo electrónico:</b></label>
+            <p>{{ email }}</p>
+          </div>
+          </dl>
+       </form>
+    </div>
+  </div>
+{% else %}
+
+<div class="container ">
+  <p>No puedes acceder a esta información. Debes iniciar sesión:</p>
+  <a href="{{ url_for('login') }}" class="btn btn-outline-dark my-2 my-sm-0 ms-2 me-2" role="button" aria-pressed="true">Iniciar Sesión</a>
+</div>
+
+{% endif %}
+
+
+{% endblock %}

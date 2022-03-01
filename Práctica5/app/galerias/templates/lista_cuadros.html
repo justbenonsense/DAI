@@ -1,0 +1,50 @@
+{% extends "base.html" %} 
+{%block title %} 
+Cuadros 
+{% endblock %} 
+
+{%block content %}
+<h1 class="text-center"> Listado de cuadros</h1>
+
+<form action="{% url 'lista_cuadros'%}}" method="post">
+    <div class="container-fluid text-center">
+        <p> ¿Qué operación desea realizar sobre la base de datos? </p>
+        <div class="row mb-2 justify-content-center">
+
+            <div class="col-md-auto my-2">
+                <a class="btn btn-outline-dark text-center" href="{% url 'insertar_cuadro' %}">Insertar cuadros</a>
+            </div>
+
+            
+        </div>
+</form>
+
+<div class="table-responsive-sm">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Galeria</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Fecha de creacion</th>
+                <th scope="col">Imagen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cuadro in cuadros %}
+            <tr>
+                <th scope="row">{{ cuadro.nombre }}</th>
+                <td>{{ cuadro.galeria }}</td>
+                <td>{{ cuadro.autor }}</td>
+                <td>{{ cuadro.fecha_creación }}</td>
+                <td><img src="{{ cuadro.imagen.url }}" width="250"></img></td>
+                <td><a class="btn btn btn-outline-dark  text-center " href="{% url 'modificar_cuadro' cuadro.nombre %}">Modificar</a></td>
+                <td><a class="btn btn btn-danger text-center " href="{% url 'eliminar_cuadro' cuadro.nombre %} ">Eliminar</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

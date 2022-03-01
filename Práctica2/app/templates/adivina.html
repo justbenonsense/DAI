@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ejercicio 1 - Adivina el número
+{% endblock %}
+
+{% block content %}
+<div class="row ">
+    <div class="col-md-5 mx-auto">
+        <h1>Ejercicio 1 - Adivina el número
+        </h1>
+        <p>El siguiente programa es un juego de adivinar un número (entre 1 y 100). </p>
+        {% if error %}
+            {{ error }}
+            {% if mostrar == 4 %}
+                <p style="color: darkblue;">¡Ha perdido! Se le han agotado el número de intentos... El número era: {{ solucion }}</p>
+            {% endif %}
+        {% else %}
+            {% if mostrar == 1 %}
+                <p style="color: darkblue;">El número buscado es menor.</p>
+            {% else %}
+                {% if mostrar == 2 %}
+                    <p style="color: darkblue;">El número buscado es mayor.</p>
+                {% else %}
+                    {% if mostrar == 3 %}
+                        <p style="color: darkblue;">¡Enhorabuena! Ha adivinado el número: {{ solucion }}</p>                       
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        <form action="{{ url_for( 'adivina') }}" method="POST">
+
+            {% if mostrar == -1 or mostrar == 3 or mostrar == 4%}
+
+                <dl>
+                    <div class="form-group ">
+                        <label for="modo">¿Desea comenzar una partida?: </label>
+                        <input type="text" class="form-control " id="modo" name="modo" placeholder="Escriba comenzar o no" required>
+                    </div>
+                </dl>
+                <dl>
+
+                <dl>
+                    <div class=" text-align ">
+                        <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                    </div>
+                </dl>
+
+                
+            {% else %}
+                <dl>
+                    <div class="form-group ">
+                        <label for="modo">¿Desea comenzar una partida o continuar con la anterior?: </label>
+                        <input type="text" class="form-control " id="modo" name="modo" placeholder="Comenzar o continuar" required>
+                    </div>
+                </dl>
+                <dl> 
+
+                <dl>
+                    <div class="form-group ">
+                        <label for="entrada">Introduzca un número natural: </label>
+                        <input type="text" class="form-control " id="entrada" name="entrada" placeholder="Numero natural" required>
+                    </div>
+                </dl>
+                <dl>
+    
+                <dl>
+                    <div class=" text-align ">
+                        <button type="submit" class="btn btn-outline-dark" id="enviar" name="enviar">Enviar</button>
+                    </div>
+                </dl>
+            {% endif %}
+            
+            
+            
+        </form>
+    </div>
+</div>
+{% endblock %}
